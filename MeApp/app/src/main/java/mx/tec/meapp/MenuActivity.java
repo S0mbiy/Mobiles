@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class MenuActivity extends AppCompatActivity {
     TextView hi;
     TextView hobbyTextView;
+    DBHelper db;
+    String name;
 
     private static final int MyHobbies_CODE = 1;
     @Override
@@ -20,18 +22,21 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Intent intentote = getIntent();
-        String name = intentote.getStringExtra("name");
+        name = intentote.getStringExtra("name");
         hi = findViewById(R.id.saludo);
         hobbyTextView = findViewById(R.id.textViewHobby);
-        hi.setText("Hi " + name);
+        String Hi = "Hi " + name;
+        hi.setText(Hi);
+        db = new DBHelper(this);
+        String hobby = db.find(name);
+        hobbyTextView.setText(hobby);
 
     }
     public void hobby(View v){
 
 
         Intent intentito = new Intent(this, MyHobbies.class);
-
-
+        intentito.putExtra("name", name);
         startActivityForResult(intentito, MyHobbies_CODE);
 
     }
@@ -60,7 +65,7 @@ public class MenuActivity extends AppCompatActivity {
 
         if(requestCode == MyHobbies_CODE && resultCode == Activity.RESULT_OK){
 
-            String hobby = data.getStringExtra("hobby");
+            String hobby = db.find(name);
             hobbyTextView.setText(hobby);
         }
     }
