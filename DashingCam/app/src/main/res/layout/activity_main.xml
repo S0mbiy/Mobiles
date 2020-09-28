@@ -12,13 +12,24 @@
         android:layout_width="68dp"
         android:layout_height="68dp"
         android:layout_marginVertical="10dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/settings"
         android:backgroundTint="#03A9F4"
         android:onClick="settings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/webView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:drawable/ic_media_play"
+        android:backgroundTint="#03A9F4"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -26,36 +37,35 @@
         android:layout_width="68dp"
         android:layout_height="68dp"
         android:layout_marginVertical="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/reload"
         android:backgroundTint="#03A9F4"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        android:layout_marginVertical="10dp"
-        android:background="@android:drawable/ic_media_play"
-        android:backgroundTint="#03A9F4"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <WebView
-        android:id="@+id/webView3"
-        android:layout_width="552dp"
-        android:layout_height="318dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="reload"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
-        android:id="@+id/webView4"
-        android:layout_width="252dp"
-        android:layout_height="150dp"
+        android:id="@+id/backCamera"
+        android:layout_width="440dp"
+        android:layout_height="330dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <WebView
+        android:id="@+id/forntCamera"
+        android:layout_width="440dp"
+        android:layout_height="330dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button5"
@@ -67,6 +77,6 @@
         android:backgroundTint="#F4030B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView3" />
+        app:layout_constraintTop_toBottomOf="@+id/forntCamera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
