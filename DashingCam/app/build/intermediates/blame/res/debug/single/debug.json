@@ -1,13 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
-    },
-    {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings.png.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\settings.png"
-    },
-    {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_reload.png.flat",
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\reload.png"
     },
@@ -16,36 +8,16 @@
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\layout_settings_activity.xml.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\layout\\settings_activity.xml"
-    },
-    {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_round_button.xml.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable-v21\\round_button.xml"
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_stop.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\stop.png"
     },
     {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -56,16 +28,76 @@
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_error.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\error.png"
     },
     {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_play.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\play.png"
+    },
+    {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\xml_root_preferences.xml.flat",
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\xml\\root_preferences.xml"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settings.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\settings.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_no_signal.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\no_signal.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_conectando.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\conectando.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_round_button.xml.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable-v21\\round_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sin_senal.jpg.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\sin_senal.jpg"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_regresar.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\regresar.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_record.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\record.png"
+    },
+    {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\layout\\activity_settings.xml"
     },
     {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",

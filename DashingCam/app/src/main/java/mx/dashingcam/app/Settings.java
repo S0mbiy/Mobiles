@@ -106,8 +106,11 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
 
 
     public void back(View v){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent data = new Intent();
+//        data.putExtra("streetkey","streetname");
+//        data.putExtra("citykey","cityname");
+//        data.putExtra("homekey","homename");
+        setResult(RESULT_OK,data);
         finish();
     }
     public void onSwitchClicked(View view) {

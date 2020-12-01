@@ -23,6 +23,7 @@ anim btn_radio_to_off_mtrl_ring_outer_path_animation
 anim btn_radio_to_on_mtrl_dot_group_animation
 anim btn_radio_to_on_mtrl_ring_outer_animation
 anim btn_radio_to_on_mtrl_ring_outer_path_animation
+array record_time
 array reply_entries
 array reply_values
 attr actionBarDivider
@@ -608,6 +609,7 @@ dimen abc_text_size_subhead_material
 dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
+dimen box_inset_layout_padding
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -627,6 +629,7 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen inner_frame_layout_padding
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
@@ -752,9 +755,12 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable conectando
+drawable error
 drawable ic_arrow_down_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable no_signal
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -767,14 +773,21 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable play
 drawable preference_list_divider_material
+drawable record
+drawable regresar
 drawable reload
 drawable round_button
 drawable settings
+drawable sin_senal
+drawable stop
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
+id BACK
 id CTRL
+id FRONT
 id FUNCTION
 id META
 id SHIFT
@@ -840,10 +853,11 @@ id barrier
 id beginning
 id blocking
 id bottom
+id button
 id button2
 id button3
-id button4
-id button5
+id button6
+id button7
 id buttonPanel
 id center
 id center_horizontal
@@ -855,6 +869,7 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id constraintLayout
 id content
 id contentPanel
 id custom
@@ -883,6 +898,8 @@ id icon_frame
 id icon_group
 id ifRoom
 id image
+id imageView
+id imageView2
 id info
 id invisible
 id italic
@@ -907,9 +924,12 @@ id packed
 id parent
 id parentPanel
 id percent
+id play
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
+id record
 id recycler_view
 id right
 id right_icon
@@ -931,7 +951,6 @@ id search_voice_btn
 id seekbar
 id seekbar_value
 id select_dialog_listview
-id settings
 id shortcut
 id showCustom
 id showHome
@@ -948,6 +967,8 @@ id standard
 id start
 id submenuarrow
 id submit_area
+id switchBack
+id switchFront
 id switchWidget
 id tabMode
 id tag_accessibility_actions
@@ -962,7 +983,14 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textView
+id textView2
+id textView3
+id textView4
+id textView5
+id textView6
 id time
+id time_spinner
 id title
 id titleDividerNoCustom
 id title_template
@@ -972,8 +1000,6 @@ id unchecked
 id uniform
 id up
 id useLogo
-id webView3
-id webView4
 id withText
 id wrap
 id wrap_content
@@ -1018,6 +1044,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_settings
 layout custom_dialog
 layout expand_button
 layout image_frame
@@ -1046,7 +1073,6 @@ layout preference_widget_switch_compat
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
-layout settings_activity
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
@@ -1083,6 +1109,7 @@ string attachment_summary_on
 string attachment_title
 string copy
 string expand_button_title
+string hello_world
 string messages_header
 string not_set
 string preference_copied
@@ -1093,6 +1120,7 @@ string status_bar_notification_info_overflow
 string summary_collapsed_preference_list
 string sync_header
 string sync_title
+string title_activity_main2
 string title_activity_settings
 string v7_preference_off
 string v7_preference_on
