@@ -1,81 +1,57 @@
 package mx.tec.act31;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import org.json.JSONArray
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FriendViewHolder> {
+class FoodAdapter(food: String, private val  listener: View.OnClickListener) :
+    RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
-    public static class FriendViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * Provide a reference to the type of views that you are using
+     * (custom ViewHolder).
+     */
+    class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val name: TextView
+        val price: TextView
 
-        // View Holder - class in charge of dealing with a view
-        // corresponding to a single element (row)
-
-        public TextView text1, text2;
-
-        public FriendViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            text1 = itemView.findViewById(R.id.textView3);
-            text2 = itemView.findViewById(R.id.textView4);
+        init {
+            // Define click listener for the ViewHolder's View.
+            name = view.findViewById(R.id.NAME)
+            price = view.findViewById(R.id.PRICE)
         }
     }
 
-    // constructor
-    // we ALWAYS need a data source
+    private val foodJson: JSONArray = JSONArray(food);
 
-    private JSONArray friends;
-    private View.OnClickListener listener;
-
-    public FoodAdapter(String friends, View.OnClickListener listener){
-        try {
-            this.friends = new JSONArray(friends);
-            Log.i("Datos", this.friends.toString());
-        }catch (JSONException e) {
-            e.printStackTrace();
-        }
-        this.listener = listener;
+    // Create new views (invoked by the layout manager)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FoodViewHolder {
+        // Create a new view, which defines the UI of the list item
+        val view = LayoutInflater.from(viewGroup.context)
+            .inflate(R.layout.row, viewGroup, false)
+        view.setOnClickListener(listener);
+        return FoodViewHolder(view)
     }
 
-    @NonNull
-    @Override
-    public FriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    // Replace the contents of a view (invoked by the layout manager)
+    override fun onBindViewHolder(viewHolder: FoodViewHolder, position: Int) {
 
-        // parse / translate from XML to Java Object
-        View v = (View) LayoutInflater
-                .from(parent.getContext())
-                .inflate(R.layout.row, parent, false);
-
-        v.setOnClickListener(listener);
-
-        FriendViewHolder fvh = new FriendViewHolder(v);
-        return fvh;
+        // Get element from your dataset at this position and replace the
+        // contents of the view with that element
+        val meal:JSONObject = foodJson.getJSONObject(position)
+        viewHolder.name.text = meal.getString("name")
+        viewHolder.price.text = meal.getString("price")
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull FriendViewHolder holder, int position) {
-        try {
-            JSONObject friend = friends.getJSONObject(position);
-            holder.text1.setText(friend.getString("nombre"));
-            holder.text2.setText(friend.getString("hobby"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return this.friends.length();
-    }
-
+    // Return the size of your dataset (invoked by the layout manager)
+    override fun getItemCount() = foodJson.length()
 
 }
+
+

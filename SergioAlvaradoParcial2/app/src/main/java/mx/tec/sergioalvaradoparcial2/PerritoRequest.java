@@ -2,10 +2,8 @@ package mx.tec.sergioalvaradoparcial2;
 
 import android.os.Handler;
 import android.os.Message;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,12 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Request extends Thread {
+public class PerritoRequest extends Thread {
 
     private String url;
     private Handler handler;
 
-    public Request(String url, Handler handler){
+    public PerritoRequest(String url, Handler handler){
         this.url = url;
         this.handler = handler;
     }
@@ -28,7 +26,8 @@ public class Request extends Thread {
         try {
             URL myUrl = new URL(url);
             HttpURLConnection con = (HttpURLConnection) myUrl.openConnection();
-            if(con.getResponseCode() == HttpURLConnection.HTTP_OK){
+            int response = con.getResponseCode();
+            if(response == HttpURLConnection.HTTP_OK){
                 StringBuilder sb = new StringBuilder();
                 String line;
                 InputStream is = con.getInputStream();

@@ -39,7 +39,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     public FriendAdapter(String friends, View.OnClickListener listener){
         try {
             this.friends = new JSONArray(friends);
-            Log.wtf("Datos", this.friends.toString());
+            Log.i("Datos", this.friends.toString());
         }catch (JSONException e) {
             e.printStackTrace();
         }

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        FriendAdapter adapter = new FriendAdapter("[]", this);
+//        FriendAdapter adapter = new FriendAdapter("[]", this);
 
         // recycler view (GUI)
         // layout manager - LinearLayoutManager, GridLayoutManager
