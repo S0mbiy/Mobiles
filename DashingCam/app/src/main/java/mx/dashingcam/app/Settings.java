@@ -1,5 +1,6 @@
 package mx.dashingcam.app;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
@@ -20,11 +21,58 @@ import android.widget.Switch;
 public class Settings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private GestureDetectorCompat mGestureDetector;
     private ProgressBar sb;
+    private boolean front, back;
+    private int duration = 15;
+    private int position = 3;
 
+    private void picker(String item){
+        switch(item){
+            case("Select..."):
+            case("15 min"):
+            case("15"):
+                duration=15;
+                position=3;
+                break;
+            case("5 min"):
+            case("5"):
+                duration=5;
+                position=1;
+                break;
+            case("10 min"):
+            case("10"):
+                duration=10;
+                position=2;
+                break;
+            case("20 min"):
+            case("20"):
+                duration=20;
+                position=4;
+                break;
+            case("30 min"):
+            case("30"):
+                duration=30;
+                position=5;
+                break;
+            case("45 min"):
+            case("45"):
+                duration=45;
+                position=6;
+                break;
+            case("60 min"):
+            case("60"):
+                duration=60;
+                position=7;
+                break;
+            default:
+                duration=15;
+                break;
+        }
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        Log.d("Debug", "Selected:"+parent.getItemAtPosition(pos));
+        String item = (String)parent.getItemAtPosition(pos);
+        picker(item);
     }
 
     @Override
@@ -54,10 +102,28 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        Log.d("Debug", "Memory "+busyMemory()+"/"+totalMemory());
+
         sb.setMax((int)totalMemory());
         sb.setProgress((int)busyMemory());
+        Intent intent = getIntent();
+        duration = intent.getIntExtra("duration", 15);
+        front = intent.getBooleanExtra("front", true);
+        back = intent.getBooleanExtra("back", true);
+        Switch frontSwitch = findViewById(R.id.switchFront);
+        Switch backSwitch = findViewById(R.id.switchBack);
+        frontSwitch.setChecked(front);
+        backSwitch.setChecked(back);
 
+        picker(duration+"");
+        spinner.setSelection(position);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                back(findViewById(R.id.imageView2));
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -104,12 +170,11 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         return busy;
     }
 
-
     public void back(View v){
         Intent data = new Intent();
-//        data.putExtra("streetkey","streetname");
-//        data.putExtra("citykey","cityname");
-//        data.putExtra("homekey","homename");
+        data.putExtra("duration",duration);
+        data.putExtra("front",front);
+        data.putExtra("back",back);
         setResult(RESULT_OK,data);
         finish();
     }
@@ -120,13 +185,11 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.switchBack:
-                if (checked)
-                    Log.d("Debug", "Selected Back:"+view.getId());
-                    break;
+                back=checked;
+                break;
             case R.id.switchFront:
-                if (checked)
-                    Log.d("Debug", "Selected Front:"+view.getId());
-                    break;
+                front=checked;
+                break;
         }
     }
 

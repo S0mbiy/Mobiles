@@ -3,7 +3,6 @@ package mx.dashingcam.app;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -16,16 +15,18 @@ import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import okio.ByteString;
 
-public class BroadcastRequest{
+public class BroadcastRequest extends Thread{
 
     private Handler handler, recorderHandler;
     private Recorder recorder;
     private WebSocket ws;
-    private boolean streaming, recording;
+    private boolean streaming, recording, activated = true;
     private String url;
     private Context context;
     private MainActivity main;
-
+    private long startTime;
+    private int duration = 15;
+    private int id;
 
     private OkHttpClient client;
 
@@ -36,6 +37,17 @@ public class BroadcastRequest{
     public void setRecording(boolean recording) {
         this.recording = recording;
         recorder.setRecording(recording);
+        if(recording){
+            startTime = System.nanoTime();
+        }
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public boolean isStreaming() {
@@ -50,17 +62,25 @@ public class BroadcastRequest{
             main.setConnecting(false);
         }  @Override
         public void onMessage(WebSocket webSocket, ByteString bytes) {
+            long elapsedTime = System.nanoTime() - startTime;
             if (streaming){
                 byte[] data = bytes.toByteArray();
                 Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
                 Message mensaje = handler.obtainMessage();
-                mensaje.obj = bmp;
+                mensaje.obj = new Frame(id, bmp);
                 handler.sendMessage(mensaje);
             }
-            if(recording){
-                Message recorderMensaje = recorderHandler.obtainMessage();
-                recorderMensaje.obj = bytes.hex();
-                recorderHandler.sendMessage(recorderMensaje);
+            if(recording && activated){
+                if(duration*60>elapsedTime/1000000000) {
+                    Message recorderMensaje = recorderHandler.obtainMessage();
+                    recorderMensaje.obj = bytes.hex();
+                    recorderHandler.sendMessage(recorderMensaje);
+                }else{
+                    Message mensaje = handler.obtainMessage();
+                    mensaje.obj = new Frame(4, BitmapFactory.decodeResource(context.getResources(), R.drawable.no_signal));
+                    handler.sendMessage(mensaje);
+                    main.setRecording(false);
+                }
             }
 
         }  @Override
@@ -72,7 +92,7 @@ public class BroadcastRequest{
             webSocket.close(NORMAL_CLOSURE_STATUS, null);
             Log.e("WebSocket: ", "Error: "+t.getMessage());
             Message mensaje = handler.obtainMessage();
-            mensaje.obj = BitmapFactory.decodeResource(context.getResources(), R.drawable.error);
+            mensaje.obj = new Frame(id, BitmapFactory.decodeResource(context.getResources(), R.drawable.error));
             handler.sendMessage(mensaje);
             main.setConnecting(false);
         }
@@ -82,7 +102,7 @@ public class BroadcastRequest{
         ws.close(1000, null);
     }
 
-    public BroadcastRequest(String url, Handler handler, Recorder recorder, Context context, MainActivity main){
+    public BroadcastRequest(String url, Handler handler, Recorder recorder, Context context, MainActivity main, int id){
         this.url = url;
         this.handler = handler;
         this.recorder = recorder;
@@ -91,11 +111,12 @@ public class BroadcastRequest{
         this.recording = false;
         this.context = context;
         this.main = main;
+        this.id = id;
     }
 
     public void run(){
         Message mensaje = handler.obtainMessage();
-        mensaje.obj = BitmapFactory.decodeResource(context.getResources(), R.drawable.conectando);
+        mensaje.obj = new Frame(id, BitmapFactory.decodeResource(context.getResources(), R.drawable.conectando));
         handler.sendMessage(mensaje);
         this.client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();

@@ -21,13 +21,15 @@ public class Player extends Thread{
     private MainActivity main;
     private BroadcastRequest request;
     private boolean exit = false;
+    private int id;
 
 
-    public Player(Handler handler, String path, Context context, MainActivity main){
+    public Player(Handler handler, String path, Context context, MainActivity main, int id){
         this.path = path;
         this.handler = handler;
         this.context= context;
         this.main = main;
+        this.id = id;
     }
 
     public void setRequest(BroadcastRequest request) {
@@ -38,9 +40,10 @@ public class Player extends Thread{
         exit = true;
     }
 
+    InputStream inputStream;
     public void run(){
         try {
-            InputStream inputStream = context.openFileInput(path+".txt");
+            inputStream = context.openFileInput(path+".txt");
 
             if ( inputStream != null ) {
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
@@ -54,15 +57,12 @@ public class Player extends Thread{
                     }
                     Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
                     Message mensaje = handler.obtainMessage();
-                    mensaje.obj = bmp;
+                    mensaje.obj = new Frame(id, bmp);
                     handler.sendMessage(mensaje);
                     Thread.sleep(40);
                 }
-
-                inputStream.close();
-                request.setStreaming(true);
-                main.setPlaying(false);
             }
+            inputStream.close();
         }
         catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
@@ -70,6 +70,12 @@ public class Player extends Thread{
             Log.e("login activity", "Can not read file: " + e.toString());
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            main.setPlaying(false);
+            request.setStreaming(true);
+            Message mensaje = handler.obtainMessage();
+            mensaje.obj = new Frame(3, BitmapFactory.decodeResource(context.getResources(), R.drawable.no_signal));
+            handler.sendMessage(mensaje);
         }
 
     }
