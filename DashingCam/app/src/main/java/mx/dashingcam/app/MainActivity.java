@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.Display;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
     private JSONObject setting;
     int duration;
     boolean fVal, bVal;
+    private int width, height;
 
     @Override
     public boolean handleMessage(@NonNull Message message) {
@@ -108,13 +110,15 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
         request.setActivated(fVal);
         request.start();
 
-
+        Display display = getWindowManager().getDefaultDisplay();
+        width = display.getWidth();
+        height = display.getHeight();
         AnimatorSet set = new AnimatorSet();
         set.playTogether(
                 ObjectAnimator.ofFloat(back, "scaleX", 1f, .6f),
                 ObjectAnimator.ofFloat(back, "scaleY", 1f, .6f),
-                ObjectAnimator.ofFloat(back, "translationX", 260f),
-                ObjectAnimator.ofFloat(back, "translationY", 200f)
+                ObjectAnimator.ofFloat(back, "translationX", width*16/32),
+                ObjectAnimator.ofFloat(back, "translationY", height*10/31)
         );
         set.start();
     }
@@ -159,12 +163,12 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
             front.bringToFront();
             AnimatorSet set = new AnimatorSet();
             set.playTogether(
-                    ObjectAnimator.ofFloat(front, "translationX", 0f),
-                    ObjectAnimator.ofFloat(front, "translationY", 0f),
+                    ObjectAnimator.ofFloat(front, "translationX", 0),
+                    ObjectAnimator.ofFloat(front, "translationY", 0),
                     ObjectAnimator.ofFloat(front, "scaleX", .6f, 1f),
                     ObjectAnimator.ofFloat(front, "scaleY", .6f, 1f),
-                    ObjectAnimator.ofFloat(back, "translationX", 260f),
-                    ObjectAnimator.ofFloat(back, "translationY", 200f),
+                    ObjectAnimator.ofFloat(back, "translationX", width*16/32),
+                    ObjectAnimator.ofFloat(back, "translationY", height*10/31),
                     ObjectAnimator.ofFloat(back, "scaleX", 1f, .6f),
                     ObjectAnimator.ofFloat(back, "scaleY", 1f, .6f)
 
@@ -180,12 +184,12 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
             set.playTogether(
                     ObjectAnimator.ofFloat(front, "scaleX", 1, 0.6f),
                     ObjectAnimator.ofFloat(front, "scaleY", 1, 0.6f),
-                    ObjectAnimator.ofFloat(front, "translationX", 1800f),
-                    ObjectAnimator.ofFloat(front, "translationY", 600),
+                    ObjectAnimator.ofFloat(front, "translationX", width*16/32),
+                    ObjectAnimator.ofFloat(front, "translationY", height*10/31),
                     ObjectAnimator.ofFloat(back, "scaleX", .6f, 1f),
                     ObjectAnimator.ofFloat(back, "scaleY", .6f, 1f),
-                    ObjectAnimator.ofFloat(back, "translationX", -1540f),
-                    ObjectAnimator.ofFloat(back, "translationY", -390f)
+                    ObjectAnimator.ofFloat(back, "translationX", 0),
+                    ObjectAnimator.ofFloat(back, "translationY", 0)
             );
             set.setDuration(500).start();
             isFrontMain=false;

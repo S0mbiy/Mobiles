@@ -73,8 +73,8 @@
         android:layout_width="400dp"
         android:layout_height="300dp"
         android:onClick="backClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/no_signal"
         tools:srcCompat="@tools:sample/avatars" />
 
