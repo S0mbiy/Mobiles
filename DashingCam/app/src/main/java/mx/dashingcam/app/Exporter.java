@@ -29,11 +29,7 @@ public class Exporter extends Thread{
 
     public void run(){
 
-        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), "DashingCam");
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        File file = new File(dir, path+".mp4");
+        File file = new File(context.getFilesDir(), path+".mp4");
         FileChannelWrapper out = null;
         try {
             out = NIOUtils.writableFileChannel(file.getAbsolutePath());

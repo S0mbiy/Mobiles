@@ -2,12 +2,15 @@ package mx.dashingcam.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GestureDetectorCompat;
 
+import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -73,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        askPermission();
+        askPermission();
 
         storage = new Storage(this);
         try {
@@ -115,21 +118,24 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
         );
         set.start();
     }
-//    public void askPermission(){
-//        if(ContextCompat.checkSelfPermission(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-//            String[] permisos = {Manifest.permission.MANAGE_EXTERNAL_STORAGE};
-//            requestPermissions(permisos, REQUEST_PERMISO);
-//            Log.wtf("","preg");
-//        }
-//    }
-//    public void onRequestPermissionsResult(int requestCode, String[] p, int[] r){
-//        if(r.length==1){
-//            if(requestCode == REQUEST_PERMISO && r[0]!= PackageManager.PERMISSION_GRANTED){
-//                askPermission();
-//                Log.wtf("","perm res");
-//            }
-//        }
-//    }
+    public void askPermission(){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            String[] permisos = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            requestPermissions(permisos, 1);
+        }
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            String[] permisos = {Manifest.permission.READ_EXTERNAL_STORAGE};
+            requestPermissions(permisos, 1);
+        }
+    }
+    public void onRequestPermissionsResult(int requestCode, String[] p, int[] r){
+        if(r.length==1){
+            if(requestCode == 1 && r[0]!= PackageManager.PERMISSION_GRANTED){
+                Log.wtf("","perm res");
+                askPermission();
+            }
+        }
+    }
 
     public void setPlaying(boolean playing) {
         this.playing = playing;
