@@ -20,6 +20,10 @@
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\drawable_app.png.flat",
+        "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\drawable\\app.png"
+    },
+    {
         "merged": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },

@@ -71,7 +71,7 @@ public class Player extends Thread{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            main.setPlaying(false);
+            main.setPlayingFalse(id);
             request.setStreaming(true);
             Message mensaje = handler.obtainMessage();
             mensaje.obj = new Frame(3, BitmapFactory.decodeResource(context.getResources(), R.drawable.no_signal));

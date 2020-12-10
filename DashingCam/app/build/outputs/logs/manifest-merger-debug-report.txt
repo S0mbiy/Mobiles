@@ -88,7 +88,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\al
 	android:roundIcon
 		ADDED from C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\AndroidManifest.xml:12:9-37
 	android:allowBackup
 		ADDED from C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme

@@ -18,11 +18,13 @@ public class Recorder extends Thread implements Handler.Callback{
     private OutputStreamWriter outputStreamWriter = null;
     private String path;
     private Context context;
+    private int id;
 
 
-    public Recorder(String path, Context context){
+    public Recorder(String path, Context context, int id){
         this.path = path;
         this.context= context;
+        this.id=id;
     }
 
     public synchronized void waitUntilReady() {

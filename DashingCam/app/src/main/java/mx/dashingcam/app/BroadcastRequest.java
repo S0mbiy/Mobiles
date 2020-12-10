@@ -59,7 +59,7 @@ public class BroadcastRequest extends Thread{
         @Override
         public void onOpen(WebSocket webSocket, Response response) {
             Log.d("WebSocket", "onOpen.");
-            main.setConnecting(false);
+            main.setConnectingFalse(id);
         }  @Override
         public void onMessage(WebSocket webSocket, ByteString bytes) {
             long elapsedTime = System.nanoTime() - startTime;
@@ -79,7 +79,7 @@ public class BroadcastRequest extends Thread{
                     Message mensaje = handler.obtainMessage();
                     mensaje.obj = new Frame(4, BitmapFactory.decodeResource(context.getResources(), R.drawable.no_signal));
                     handler.sendMessage(mensaje);
-                    main.setRecording(false);
+                    main.setRecordingFalse(id);
                 }
             }
 
@@ -94,7 +94,7 @@ public class BroadcastRequest extends Thread{
             Message mensaje = handler.obtainMessage();
             mensaje.obj = new Frame(id, BitmapFactory.decodeResource(context.getResources(), R.drawable.error));
             handler.sendMessage(mensaje);
-            main.setConnecting(false);
+            main.setConnectingFalse(id);
         }
     }
 

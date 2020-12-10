@@ -32,14 +32,16 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity implements Handler.Callback{
     ImageView front, back;
     private boolean isFrontMain, recording = false, exporting=false, playing=false, connecting=false;
+    private boolean recordingFront = false, exportingFront=false, playingFront=false, connectingFront=false, recordingBack = false, exportingBack=false, playingBack=false, connectingBack=false;
     private static final int requestCode = 1;
     private GestureDetectorCompat mGestureDetector;
     private static final String url = "ws://192.168.4.1:8888";
+    private static final String backUrl = "ws://192.168.4.190:8888";
     private Handler handler;
-    private Recorder recorder;
+    private Recorder recorder, backRecorder;
     private Button record, play;
-    private BroadcastRequest request;
-    private Player player = null;
+    private BroadcastRequest request, backRequest;
+    private Player player = null, backPlayer = null;
     private Storage storage;
     private JSONObject setting;
     int duration;
@@ -53,11 +55,14 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
             Bitmap data = frame.frame;
             front.setImageBitmap(Bitmap.createScaledBitmap(data, 800,600, false));
         }else if(frame.id == 2){
-            //todo back view
+            Bitmap data = frame.frame;
+            back.setImageBitmap(Bitmap.createScaledBitmap(data, 800,600, false));
         }else if(frame.id == 3){
             play.setBackgroundResource(R.drawable.play);
         }else if(frame.id == 4){
             record.setBackgroundResource(R.drawable.record);
+        }else if(frame.id == 5){
+            Toast.makeText(this, "Video exported successfully!", Toast.LENGTH_SHORT).show();
         }else{
             Log.wtf("Handler","Unrecognized id found");
         }
@@ -101,14 +106,20 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
 
         isFrontMain = true;
 
-        recorder = new Recorder("videoFront", this);
+        recorder = new Recorder("videoFront", this, 1);
         recorder.waitUntilReady();
+        backRecorder = new Recorder("videoBack", this, 2);
+        backRecorder.waitUntilReady();
 
+        setConnectingTrue();
         request = new BroadcastRequest(url, handler, recorder, this, this, 1);
-        connecting = true;
         request.setDuration(duration);
         request.setActivated(fVal);
         request.start();
+        backRequest = new BroadcastRequest(backUrl, handler, backRecorder, this, this, 2);
+        backRequest.setDuration(duration);
+        backRequest.setActivated(bVal);
+        backRequest.start();
 
         Display display = getWindowManager().getDefaultDisplay();
         width = display.getWidth();
@@ -141,21 +152,75 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
         }
     }
 
-    public void setPlaying(boolean playing) {
-        this.playing = playing;
+    public void setPlayingTrue() {
+        playingBack = true;
+        playingFront = true;
+        this.playing = true;
+    }
+    public void setPlayingFalse(int id) {
+        if(id==1){
+            playingFront = false;
+        }else if(id==2){
+            playingBack = false;
+        }
+        if(!playingFront && !playingBack){
+            playing = false;
+        }
     }
 
-    public void setExporting(boolean exporting) {
-        this.exporting = exporting;
+    public void setExportingTrue() {
+        exportingBack=true;
+        exportingFront=true;
+        this.exporting = true;
     }
 
-    public void setConnecting(boolean connecting) {
-        this.connecting = connecting;
+    public void setExportingFalse(int id) {
+        if(id==1){
+            exportingFront = false;
+        }else if(id==2){
+            exportingBack = false;
+        }
+        if(!exportingFront && !exportingBack){
+            exporting = false;
+        }
+    }
+
+    public void setConnectingTrue() {
+        connectingFront=true;
+        connectingBack=true;
+        this.connecting = true;
+    }
+
+    public void setConnectingFalse(int id) {
+        if(id==1){
+            connectingFront = false;
+        }else if(id==2){
+            connectingBack = false;
+        }
+        if(!connectingFront&&!connectingBack){
+            this.connecting = false;
+        }
+    }
+
+    public void setRecordingFalse(int id) {
+        if(id==1){
+            recordingFront = false;
+        }else if(id==2){
+            recordingBack = false;
+        }
+        if(!recordingFront&&!recordingBack){
+            this.recording = false;
+            request.setRecording(false);
+            backRequest.setRecording(false);
+        }
     }
 
     public void setRecording(boolean recording) {
         this.recording = recording;
-        request.setRecording(this.recording);
+        this.recordingFront = recording;
+        this.recordingBack = recording;
+        request.setRecording(recording);
+        backRequest.setRecording(recording);
     }
 
     public void frontClick(View v){
@@ -248,11 +313,16 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
     public void reload(View v){
         if(!connecting) {
             request.close();
+            backRequest.close();
+            setConnectingTrue();
             request = new BroadcastRequest(url, handler, recorder, this, this, 1);
-            connecting = true;
             request.setDuration(duration);
             request.setActivated(fVal);
             request.start();
+            backRequest = new BroadcastRequest(backUrl, handler, backRecorder, this, this, 2);
+            backRequest.setDuration(duration);
+            backRequest.setActivated(bVal);
+            backRequest.start();
             setRecording(false);
             record.setBackgroundResource(R.drawable.record);
         }
@@ -274,17 +344,25 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
         if(!this.playing) {
             play.setBackgroundResource(R.drawable.stop);
             Toast.makeText(this, "Playing video", Toast.LENGTH_SHORT).show();
+            setPlayingTrue();
             this.playing = true;
+            playingFront = true;
+            playingBack = true;
             request.setStreaming(false);
+            backRequest.setStreaming(false);
             setRecording(false);
             record.setBackgroundResource(R.drawable.record);
             player = new Player(handler, "videoFront", this, this, 1);
             player.setRequest(request);
             player.start();
+            backPlayer = new Player(handler, "videoBack", this, this, 2);
+            backPlayer.setRequest(backRequest);
+            backPlayer.start();
         }else{
-            if(player != null){
+            if(player != null ){
                 play.setBackgroundResource(R.drawable.play);
                 player.exit();
+                backPlayer.exit();
                 Toast.makeText(this, "Video stopped", Toast.LENGTH_SHORT).show();
             }
         }
@@ -297,9 +375,11 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback{
         }else {
             if (!exporting) {
                 Toast.makeText(this, "Exporting video", Toast.LENGTH_SHORT).show();
-                exporting = true;
-                Exporter exporter = new Exporter("videoFront", this, this);
+                setExportingTrue();
+                Exporter exporter = new Exporter("videoFront", this, this, handler, fVal,1);
                 exporter.start();
+                Exporter backExporter = new Exporter("videoBack", this, this, handler, bVal,2);
+                backExporter.start();
             }
         }
     }
