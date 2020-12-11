@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fd3a5a6-3501-46b4-a9b7-175b72c4b739" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MeApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MeApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SergioAlvaradoParcial2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SergioAlvaradoParcial2/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fragment" beforeDir="false" afterPath="$PROJECT_DIR$/../fragment" afterDir="false" />
@@ -20,7 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3_XL_API_26" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="99031FFBA007AP" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

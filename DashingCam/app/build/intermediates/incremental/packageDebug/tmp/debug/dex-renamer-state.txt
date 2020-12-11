@@ -1,4 +1,4 @@
-#Wed Dec 09 21:56:02 CST 2020
+#Thu Dec 10 20:04:07 CST 2020
 base.0=C\:\\Users\\alvar\\AndroidStudioProjects\\DashingCam\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

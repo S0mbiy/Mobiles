@@ -3157,7 +3157,7 @@
     </string-array><string-array name="reply_values">
         <item>reply</item>
         <item>reply_all</item>
-    </string-array></file><file path="C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\res\values\colors.xml" qualifiers=""><color name="colorPrimary">#6200EE</color><color name="colorPrimaryDark">#3700B3</color><color name="colorAccent">#03DAC5</color></file><file path="C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\res\values\dimens.xml" qualifiers=""><dimen name="box_inset_layout_padding">0dp</dimen><dimen name="inner_frame_layout_padding">5dp</dimen></file><file path="C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\res\values\record_time.xml" qualifiers=""><string-array name="record_time">
+    </string-array></file><file path="C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\res\values\colors.xml" qualifiers=""><color name="colorPrimary">#FFFFFF</color><color name="colorPrimaryDark">#00b3ff</color><color name="colorAccent">#03DAC5</color></file><file path="C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\res\values\dimens.xml" qualifiers=""><dimen name="box_inset_layout_padding">0dp</dimen><dimen name="inner_frame_layout_padding">5dp</dimen></file><file path="C:\Users\alvar\AndroidStudioProjects\DashingCam\app\src\main\res\values\record_time.xml" qualifiers=""><string-array name="record_time">
         <item>Select...</item>
         <item>5 min</item>
         <item>10 min</item>
